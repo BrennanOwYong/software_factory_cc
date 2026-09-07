@@ -1,17 +1,17 @@
 # Project-local Codex software factory
 
-**[Read the architecture article →](https://brennanowyong.github.io/company-visibility-dashboard/)**
+**[Read the architecture article →](https://brennanowyong.github.io/software_factory_cc/)**
 
 This repository is a project-local software factory. It turns product intent into a tested GitHub
 pull request through explicit requirements, a computed dependency graph, isolated builders,
-independent validation, and evidence-backed delivery. The [project page](https://brennanowyong.github.io/company-visibility-dashboard/)
+independent validation, and evidence-backed delivery. The [project page](https://brennanowyong.github.io/software_factory_cc/)
 explains the architecture, the lessons applied, and the request data flow with diagrams.
 
 ## See it
 
-- **[Project showcase](https://brennanowyong.github.io/company-visibility-dashboard/)** — why the
+- **[Project showcase](https://brennanowyong.github.io/software_factory_cc/)** — why the
   factory exists, how each stage works, and the sources behind the design.
-- **[Source repository](https://github.com/BrennanOwYong/company-visibility-dashboard)** — scripts,
+- **[Source repository](https://github.com/BrennanOwYong/software_factory_cc)** — scripts,
   control UI, project memory, and test contracts.
 
 Clone this repository as a product project and start Codex in its root. The project `SessionStart`
@@ -21,7 +21,7 @@ for that project.
 This is not another vibe-coding wrapper. It automates the software development life cycle (SDLC)
 itself — product interview, architecture, roadmap, isolated builders, independent audit, tested
 merge — instead of asking one agent in one context window to hold the whole thing in its head. See
-the [showcase](https://brennanowyong.github.io/company-visibility-dashboard/) for the reasoning and
+the [showcase](https://brennanowyong.github.io/software_factory_cc/) for the reasoning and
 the evidence behind that distinction.
 
 ## Sources of truth

@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "project_id": "1f49d451-5635-4774-9884-de294f10d9f3",
+  "github": "https://github.com/BrennanOwYong/software_factory_cc",
+  "default_branch": "main",
+  "docs_root": "docs",
+  "runtime_root": ".factory/runtime"
+}
