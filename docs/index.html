@@ -250,6 +250,16 @@
   .feature-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 9px; }
   .video-caption { color: #f4f0e8; padding: 12px 8px 2px; margin: 0; font-size: .9rem; }
   .video-caption a { color: #ffb49e; }
+  .hero { position: relative; isolation: isolate; overflow: visible; }
+  .hero > * { position: relative; z-index: 2; }
+  .hero::after { content: ""; position: absolute; z-index: 1; inset: -32px -12vw 0; background: linear-gradient(180deg, rgba(244,240,232,.34), rgba(244,240,232,.76) 78%, var(--bg)); backdrop-filter: blur(3px); pointer-events: none; }
+  .hero > .hero-sequence-bg { position: absolute; z-index: 0; top: -24px; left: -12%; width: 124%; height: 360px; opacity: .55; filter: blur(8px); transform: rotate(-2deg) scale(1.06); pointer-events: none; mix-blend-mode: multiply; }
+  .hero-sequence-bg .bg-lane { stroke: var(--accent-2); stroke-dasharray: 5 7; opacity: .7; }
+  .hero-sequence-bg .bg-message { stroke: var(--accent); stroke-width: 3; opacity: .85; }
+  .hero-sequence-bg text { fill: var(--accent-2); font: 700 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .programmatic-diagram { margin: 24px 0 28px; }
+  .programmatic-diagram .box.highlight { fill: color-mix(in srgb, var(--accent-2) 18%, var(--bg-raised)); stroke: var(--accent-2); stroke-width: 2; }
+  .programmatic-diagram .program-flow { fill: none; stroke: var(--accent-2); stroke-width: 2; marker-end: url(#program-arrow); }
   /* Editorial layer: a little more magazine, a little less documentation. */
   :root { --bg: #f4f0e8; --bg-raised: #fffdf8; --ink: #201b17; --ink-dim: #655c52; --accent: #d34d2f; --accent-2: #176b59; --line: #ded5c8; --code-bg: #e9e1d4; --tag: #7657a8; }
   body { background: radial-gradient(circle at 82% 0%, rgba(211,77,47,.11), transparent 30rem), var(--bg); }
@@ -276,6 +286,11 @@
 <div class="wrap">
 
 <header class="hero">
+  <svg class="hero-sequence-bg" viewBox="0 0 900 330" aria-hidden="true">
+    <path class="bg-lane" d="M100 42 V315"/><path class="bg-lane" d="M300 42 V315"/><path class="bg-lane" d="M500 42 V315"/><path class="bg-lane" d="M700 42 V315"/><path class="bg-lane" d="M840 42 V315"/>
+    <text x="48" y="28">intent</text><text x="255" y="28">memory</text><text x="448" y="28">control</text><text x="638" y="28">agents</text><text x="785" y="28">proof</text>
+    <path class="bg-message" d="M100 86 H300"/><path class="bg-message" d="M300 136 H500"/><path class="bg-message" d="M500 186 H700"/><path class="bg-message" d="M700 236 H500"/><path class="bg-message" d="M500 286 H840"/>
+  </svg>
   <p class="kicker">architecture notes · software factory</p>
   <h1>From a vague idea to a proven pull request</h1>
   <p class="dek">A field note on designing an agentic software factory: the architecture, the lessons that shaped it, and one request traced from intent to evidence.</p>
@@ -352,6 +367,17 @@
   <p class="eyebrow">03 · the support layer</p>
   <h2>Programmatic support is the point</h2>
   <p>Agentic work becomes useful when the surrounding system handles the boring certainty. A model can reason about a bounded task. A program can dispatch that task, enforce its prerequisites, isolate its files, record its state, and decide what happens next.</p>
+  <div class="architecture programmatic-diagram" role="img" aria-label="Architecture diagram showing a programmatic control plane dispatching bounded work to agent workers and collecting evidence">
+    <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="program-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--accent-2)"/></marker></defs>
+      <text x="30" y="28" class="muted">INPUT</text><text x="280" y="28" class="muted">PROGRAMMATIC CONTROL PLANE</text><text x="740" y="28" class="muted">AGENTIC WORK</text>
+      <rect class="box" x="20" y="94" width="170" height="84" rx="10"/><text x="42" y="126" class="label">Product request</text><text x="42" y="150" class="muted">PRD + acceptance</text>
+      <rect class="box highlight" x="240" y="54" width="410" height="164" rx="14"/><text x="268" y="88" class="label">Dispatch engine</text><text x="268" y="115" class="muted">DAG · queues · state · worktrees</text><path class="program-flow" d="M268 140 H618"/><text x="268" y="171" class="muted">rebase · test · handoff · evidence</text><text x="268" y="197" class="muted">The system carries the certainty.</text>
+      <rect class="box green" x="700" y="54" width="175" height="64" rx="10"/><text x="720" y="82" class="label">Builder agent</text><text x="720" y="103" class="muted">judgment + code</text>
+      <rect class="box green" x="700" y="148" width="175" height="64" rx="10"/><text x="720" y="176" class="label">Tester agent</text><text x="720" y="197" class="muted">criteria + audit</text>
+      <path class="program-flow" d="M190 136 H240"/><path class="program-flow" d="M650 86 H700"/><path class="program-flow" d="M700 180 H650"/>
+    </svg>
+  </div>
   <div class="next-grid">
     <div class="next-card"><h3>Dispatch the right work</h3><p>The roadmap is a DAG, not a model’s suggestion. A dispatcher starts only tickets whose prerequisites are complete, then gives each builder a clean worktree and the relevant context.</p></div>
     <div class="next-card"><h3>Make state observable</h3><p>Ready, running, testing, blocked, and done are program states. They survive a context window, support retries, and make it possible to see where a request actually is.</p></div>
