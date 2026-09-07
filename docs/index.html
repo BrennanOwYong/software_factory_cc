@@ -253,11 +253,13 @@
   .hero { position: relative; isolation: isolate; overflow: visible; }
   .hero > * { position: relative; z-index: 2; }
   .hero::after { content: ""; position: absolute; z-index: 1; inset: -32px -12vw 0; background: linear-gradient(180deg, rgba(244,240,232,.34), rgba(244,240,232,.76) 78%, var(--bg)); backdrop-filter: blur(3px); pointer-events: none; }
-  .hero > .hero-sequence-bg { position: absolute; z-index: 0; top: -24px; left: -12%; width: 124%; height: 360px; opacity: .55; filter: blur(8px); transform: rotate(-2deg) scale(1.06); pointer-events: none; mix-blend-mode: multiply; }
+  .hero > .hero-sequence-bg { position: absolute; z-index: 0; top: -24px; left: -12%; width: 124%; height: 360px; opacity: .70; filter: blur(8px); transform: rotate(-2deg) scale(1.06); pointer-events: none; mix-blend-mode: multiply; }
   .hero-sequence-bg .bg-lane { stroke: var(--accent-2); stroke-dasharray: 5 7; opacity: .7; }
   .hero-sequence-bg .bg-message { stroke: var(--accent); stroke-width: 3; opacity: .85; }
   .hero-sequence-bg text { fill: var(--accent-2); font: 700 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
   .programmatic-diagram { margin: 24px 0 28px; }
+  .diagram-label { color: var(--accent-2); font: 700 .76rem "SF Mono", Menlo, Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; margin: 26px 0 -12px; }
+  .programmatic-diagram { border: 2px solid var(--accent-2); transform: none; }
   .programmatic-diagram .box.highlight { fill: color-mix(in srgb, var(--accent-2) 18%, var(--bg-raised)); stroke: var(--accent-2); stroke-width: 2; }
   .programmatic-diagram .program-flow { fill: none; stroke: var(--accent-2); stroke-width: 2; marker-end: url(#program-arrow); }
   /* Editorial layer: a little more magazine, a little less documentation. */
@@ -367,6 +369,7 @@
   <p class="eyebrow">03 · the support layer</p>
   <h2>Programmatic support is the point</h2>
   <p>Agentic work becomes useful when the surrounding system handles the boring certainty. A model can reason about a bounded task. A program can dispatch that task, enforce its prerequisites, isolate its files, record its state, and decide what happens next.</p>
+  <p class="diagram-label">Architecture · the control plane around the agents</p>
   <div class="architecture programmatic-diagram" role="img" aria-label="Architecture diagram showing a programmatic control plane dispatching bounded work to agent workers and collecting evidence">
     <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
       <defs><marker id="program-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--accent-2)"/></marker></defs>
